@@ -11,7 +11,7 @@ private:
     SDL_Window* Window;
     SDL_Renderer* Renderer;
 
-    std::vector<Renderable> renderarray;
+    std::vector<Renderable*> renderarray;
 
     Player player;
 

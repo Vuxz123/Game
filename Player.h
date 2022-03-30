@@ -19,9 +19,12 @@ public:
 
 	Player(SDL_Renderer* renderer);
 
-	void render(SDL_Renderer* renderer) override;
+	void render(SDL_Renderer* renderer) override {
+		Pos p = Util::fromVectortoPos(pos);
+		GameTextureManager::blit(renderer, texture, p.x, p.y);
+	}
 
-	void move();
+	void move(Vector2D v);
 
 };
 

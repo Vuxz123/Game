@@ -11,8 +11,6 @@ Player::Player(SDL_Renderer* renderer) {
 	pos = Vector2D(0, 0);
 }
 
-void Player::render(SDL_Renderer* renderer) {
-	Pos p = Util::fromVectortoPos(pos);
-	
-	GameTextureManager::blit(renderer, texture, p.x, p.y);
+void Player::move(Vector2D v) {
+	this->pos = this->pos + v;
 }

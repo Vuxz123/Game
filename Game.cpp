@@ -1,6 +1,9 @@
 #include<SDL.h>
+#include <Windows.h>
 #include "Game.h"
 #include "Player.h"
+
+float a = 0.1;
 
 bool CApp::OnInit() {
     if (SDL_Init(SDL_INIT_EVERYTHING) < 0) {
@@ -30,11 +33,11 @@ bool CApp::OnInit() {
     }
     
 
-    renderarray = std::vector<Renderable>();
+    renderarray = std::vector<Renderable*>();
 
     player = Player(Renderer);
 
-    renderarray.push_back(player);
+    renderarray.push_back(&player);
 
     return true;
 }
@@ -51,10 +54,9 @@ void CApp::OnEvent(SDL_Event* Event) {
 void CApp::OnLoop() {
 }
 void CApp::OnRender() {
-    player.render(Renderer);
     if (!renderarray.empty()) {
-        for (auto render : renderarray) {
-            render.render(Renderer);
+        for (auto rendered : renderarray) {
+            rendered->render(Renderer);
         }
     }
     Util::presentScene(Renderer);
