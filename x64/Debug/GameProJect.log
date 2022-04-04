@@ -1,6 +1,4 @@
-﻿  Game.cpp
-D:\Solution1\GameProJect\GameProJect\Game.cpp(6,14): warning C4305: 'initializing': truncation from 'double' to 'float'
-  Main.cpp
-  Player.cpp
-  Generating Code...
+﻿  Button.cpp
+D:\Solution1\GameProJect\GameProJect\Player.h(29,1): warning C4305: 'argument': truncation from 'double' to 'float'
+D:\Solution1\GameProJect\GameProJect\Button.cpp(21,1): warning C4305: 'argument': truncation from 'double' to 'float'
   GameProJect.vcxproj -> D:\Solution1\GameProJect\x64\Debug\GameProJect.exe
