@@ -148,11 +148,11 @@
     <ClCompile Include="Vector2D.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Game.h" />
-    <ClInclude Include="Texture.h" />
-    <ClInclude Include="Player.h" />
-    <ClInclude Include="RB.h" />
-    <ClInclude Include="Util.h" />
+    <ClInclude Include="Game.cpp" />
+    <ClInclude Include="Texture.cpp" />
+    <ClInclude Include="Player.cpp" />
+    <ClInclude Include="RB.cpp" />
+    <ClInclude Include="Util.cpp" />
     <ClInclude Include="Vector2D.h" />
   </ItemGroup>
   <ItemGroup>

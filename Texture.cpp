@@ -165,7 +165,7 @@ public:
     }
 
     //Renders texture at given point
-    void render(int x, int y, SDL_Renderer* Renderer,SDL_Rect* clip = NULL, double angle = 0.0, SDL_Point* center = NULL, SDL_RendererFlip flip = SDL_FLIP_NONE){
+    void render(SDL_Renderer* Renderer, int x, int y, SDL_Rect* clip = NULL, double angle = 0.0, SDL_Point* center = NULL, SDL_RendererFlip flip = SDL_FLIP_NONE){
         //Set rendering space and render to screen
         SDL_Rect renderQuad = { x, y, mWidth, mHeight };
 
@@ -177,7 +177,8 @@ public:
         }
 
         //Render to screen
-        SDL_RenderCopyEx(Renderer, mTexture, clip, &renderQuad, angle, center, flip);
+        //SDL_RenderCopyEx(Renderer, mTexture, clip, &renderQuad, angle, center, flip);
+        SDL_RenderCopy(Renderer, mTexture, NULL, &renderQuad);
     }
 
     //Gets image dimensions

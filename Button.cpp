@@ -1,7 +1,8 @@
 #include <SDL.h>
-#include <RB.h>
+#include <RB.cpp>
+#include <Texture.cpp>
 #include <Vector2D.h>
-#include <Game.h>
+#include <Util.cpp>
 
 class Button : Renderable {
 private:
@@ -16,10 +17,10 @@ public:
 		}
 		pos = Vector2D(0, 0);
 	}
-	void render(SDL_Renderer* Renderer) {
+	void render(SDL_Renderer* Renderer) override {
 		Pos p = Util::fromVectortoPos(pos);
 		SDL_RenderSetScale(Renderer, 0.4, 0.4);
-		texture.render(p.x, p.y, Renderer);
+		texture.render(Renderer,p.x, p.y);
 		SDL_RenderSetScale(Renderer, 1, 1);
 	}
 };

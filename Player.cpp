@@ -1,10 +1,9 @@
 #pragma once
 #include <SDL.h>
-#include <RB.h>
+#include <RB.cpp>
+#include <Texture.cpp>
 #include <Vector2D.h>
-#include <string>
-#include <Util.h>
-#include <Texture.h>
+#include <Util.cpp>
 
 class Player : public Renderable
 {
@@ -27,7 +26,7 @@ public:
 	void render(SDL_Renderer* Renderer) override {
 		Pos p = Util::fromVectortoPos(pos);
 		SDL_RenderSetScale(Renderer, 0.4, 0.4);
-		texture.render(p.x, p.y, Renderer);
+		texture.render(Renderer ,p.x, p.y);
 		SDL_RenderSetScale(Renderer, 1, 1);
 	}
 

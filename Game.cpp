@@ -1,11 +1,14 @@
 #include <SDL.h>
-#include "Player.h"
+#include <SDL_image.h>
+#include <Player.cpp>
 #include <vector>
-#include <utility>
+#include <Util.cpp>
+#include <RB.cpp>
+
 #pragma once
 class CApp {
 private:
-    bool    Running;
+    bool Running;
 
     SDL_Surface* Surf_Display;
     SDL_Window* Window;
@@ -44,8 +47,6 @@ public:
 
         return 0;
     }
-
-public:
 
     bool OnInit() {
         if (SDL_Init(SDL_INIT_EVERYTHING) < 0) {
