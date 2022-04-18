@@ -1,9 +1,9 @@
-#include <SDL.h>
-#include <Game.cpp>
+#include <GameStructure.h>
 
 int main(int argc, char* argv[]) {
+	GameStructure game;
 
-	CApp theApp;
+	game.run();
 
-	return theApp.OnExecute();
+	return 1;
 }

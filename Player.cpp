@@ -1,38 +1,33 @@
-#pragma once
-#include <SDL.h>
-#include <RB.cpp>
-#include <Texture.cpp>
-#include <Vector2D.h>
-#include <Util.cpp>
+#include "Player.h"
+#include <Util.h>
 
-class Player : public Renderable
-{
-private:
-	std::string link = "Player.bmp";
-	Vector2D pos;
-	LTexture texture;
+void Player::init(SDL_Renderer* renderer) {
+	PATH = "Player.bmp";
+	position = Vector2D(0, 0);
 
-public:
+	texture = Texture(PATH);
 
-	Player(){}
+	texture.load(renderer);
+}
 
-	Player(SDL_Renderer* Renderer, SDL_Window* Window) {
-		if (!texture.loadFromFile(link, Window, Renderer)) {
-			SDL_LogMessage(SDL_LOG_CATEGORY_APPLICATION, SDL_LOG_PRIORITY_INFO, "Fail to load Player texture");
-		}
-		pos = Vector2D(0, 0);
-	}
 
-	void render(SDL_Renderer* Renderer) override {
-		Pos p = Util::fromVectortoPos(pos);
-		SDL_RenderSetScale(Renderer, 0.4, 0.4);
-		texture.render(Renderer ,p.x, p.y);
-		SDL_RenderSetScale(Renderer, 1, 1);
-	}
 
-	void move(Vector2D v) {
-		this->pos = this->pos + v;
-	}
+void Player::render(SDL_Renderer* renderer) {
 
-};
+}
 
+void Player::eventCheck(SDL_Event* Event) {
+
+}
+
+void Player::tick() {
+
+}
+
+void Player::a() {
+	SDL_Log("a");
+}
+
+void Player::free() {
+	texture.free();
+}

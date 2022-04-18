@@ -1,0 +1,22 @@
+#pragma once
+#include <GameObject.h>
+
+class Player : GameObject
+{
+public:
+
+	Player() {}
+
+	void init(SDL_Renderer* renderer) override;
+
+	void render(SDL_Renderer* renderer) override;
+	
+	void eventCheck(SDL_Event* Event) override;
+
+	void tick() override;
+
+	void free() override;
+
+	void a() override;
+};
+
