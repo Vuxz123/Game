@@ -1,7 +1,11 @@
-#include "GameStructure.h"
+#include <GameStructure.h>
 #include <Player.h>
+#include <iostream>
 
-void GameStructure::init() {
+void GameBase::init() {
+
+	//Initialize Environment
+	SDL_Log("Initializing Game");
 
 	if (SDL_Init(SDL_INIT_EVERYTHING) != 0) {
 		SDL_Log("Unable to initialize SDL: %s", SDL_GetError());
@@ -18,80 +22,102 @@ void GameStructure::init() {
 		return;
 	}
 
-	Player* player = new Player();
+	//Load Texture
+	SDL_Log("Loading Texture:");
+	t->load(renderer);
+	menu->load(renderer);
 
-	player->init(renderer);
+	//Setup Object
+	SDL_Log("Setup Object");
+	o1.setTexture(menu);
+	o1.setSize(2, 2);
+	o1.setPos(5, 5);
+	o2.setTexture(t);
+	
+	//Setup Scene
+	SDL_Log("Setup Scene");
+	s1.push_back((GameObject*)&o1);
+	s2.push_back((GameObject*)&o2);
 
-	player->a();
+	addScene("scene1", s1);
+	addScene("scene2", s2);
 
-	((GameObject*)player)->a();
+	changeScene("scene1");
 
-	gameobjects.push_back((GameObject*)player);
-
-	for (GameObject* a : gameobjects) {
-		a->a();
-	}
-
+	SDL_Log("Complete");
 }
 
 
-void GameStructure::render(){
-	for (GameObject* a : gameobjects) {
+void GameBase::render(){
+	SDL_RenderClear(renderer);
+
+	for (GameObject* a : (scene[presentedscene])) {
 		a->render(renderer);
 	}
+
+	SDL_RenderPresent(renderer);
 }
 
 
-void GameStructure::eventCheck(SDL_Event* Event) {
+void GameBase::eventCheck(SDL_Event* Event) {
 	if (Event->type == SDL_QUIT) {
 		running = false;
 		return;
 	}
-	int i = 0;
 
-	for (GameObject* a : gameobjects) {
-		i++;
-		if (a == NULL) {
-			SDL_Log("%d", i);
+	if (Event->type == SDL_KEYDOWN) {
+		switch(Event->key.keysym.sym) {
+		case SDLK_b: {
+			changeScene(MENU);
+			break;
 		}
+				
+		case SDLK_v: {
+			changeScene(GAME);
+			break;
+		}
+				
+		}
+	}
+
+	for (GameObject* a : (scene[presentedscene])) {
 		a->eventCheck(Event);
 	}
 }
 
 
-void GameStructure::tick() {
-	for (GameObject* a : gameobjects) {
+void GameBase::tick() {
+	for (GameObject* a : (scene[presentedscene])) {
 		a->tick();
 	}
 }
 
 
-void GameStructure::quit() {
+void GameBase::quit() {
 	SDL_DestroyRenderer(renderer);
 	SDL_DestroyWindow(window);
 	renderer = NULL;
 	window = NULL;
-
-	for (GameObject* a : gameobjects) {
-		a->free();
-		delete a;
-		a = NULL;
-	}
+	delete t;
+	delete menu;
+	t = NULL;
+	menu = NULL;
 }
 
 
-void GameStructure::run() {
+void GameBase::run() {
 
 	init();
 
 	while (running) {
-		render();
 
 		while (SDL_PollEvent(&Event)) {
 			eventCheck(&Event);
 		}
 
 		tick();
+
+		render();
 
 	}
 
@@ -101,7 +127,14 @@ void GameStructure::run() {
 
 
 
+void GameBase::addScene(std::string name, std::vector<GameObject*> objects) {
+	scene.insert(std::pair<std::string, std::vector<GameObject*>>(name, objects));
+}
 
+void GameBase::changeScene(std::string name) {
+	presentedscene = name;
+
+}
 
 
 

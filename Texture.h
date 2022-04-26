@@ -12,7 +12,11 @@ private:
 	std::string PATH;
 
 public:
-	Texture(){}
+	Texture(){
+		texture = NULL;
+		w = 0;
+		h = 0;
+	}
 
 	Texture(std::string path) {
 		PATH = path;
@@ -33,8 +37,13 @@ public:
 	}
 
 	void free() {
+		if (texture == NULL) return;
 		SDL_DestroyTexture(texture);
 		texture = NULL;
+	}
+
+	~Texture() {
+		free();
 	}
 
 };
