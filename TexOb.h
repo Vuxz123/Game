@@ -1,6 +1,6 @@
 #pragma once
 #include <GameObject.h>
-class TexOb : GameObject
+class TexOb : public GameObject
 {
 private:
 	float sizex,sizey;
@@ -8,7 +8,7 @@ private:
 public:
 	TexOb(){}
 
-	void setPos(float x, float y);
+	void setPos(float x, float y) override;
 
 	void setSize(float x, float y);
 
@@ -23,6 +23,10 @@ public:
 	void free() override;
 
 	void setTexture(Texture* a) override;
+
+	void setColorMod(Uint8 r, Uint8 g, Uint8 b) {
+		SDL_SetTextureColorMod(texture->getTexture(), r,g,b);
+	}
 
 	~TexOb();
 };

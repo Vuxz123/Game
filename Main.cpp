@@ -1,7 +1,9 @@
 #include <GameStructure.h>
 
+static GameBase* game;
+
 int main(int argc, char* argv[]) {
-	GameBase* game = new GameBase();
+	game = new GameBase();
 
 	game->run();
 
@@ -12,4 +14,7 @@ int main(int argc, char* argv[]) {
 	return 1;
 }
 
+static GameBase* getGame() {
+	return game;
+}
 

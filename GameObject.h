@@ -50,6 +50,16 @@ public:
 
 	virtual void a();
 
+	Vector2D getPos() {
+		return position;
+	}
+
+	virtual void setPos(float x, float y){}
+
+	void setPosition(Vector2D v) {
+		position = v;
+	}
+
 	~GameObject() {
 	}
 

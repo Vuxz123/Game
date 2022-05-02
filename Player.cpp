@@ -25,23 +25,34 @@ void Player::render(SDL_Renderer* renderer) {
 
 void Player::eventCheck(SDL_Event* Event) {
 	if (Event->type == SDL_KEYDOWN) {
-		switch (Event->key.keysym.sym)
+		switch (Event->key.keysym.scancode)
 		{
-		case SDLK_a: {
-			position = position + Vector2D(-3, 0);
-			std::cout << "a";
-		}
-		case SDLK_d: {
-			position = position + Vector2D(3, 0);
-		}
-		case SDLK_w: {
-			position = position + Vector2D(0, -3);
-		}
-		case SDLK_s: {
-			position = position + Vector2D(0, 3);
-		}
-		default:
+		case SDL_SCANCODE_A: {
+			position = position + Vector2D(-30, 0);
 			break;
+		}
+		case SDL_SCANCODE_D: {
+			position = position + Vector2D(30, 0);
+			break;
+		}
+		default: {
+			break;
+		}
+		}
+		
+		switch (Event->key.keysym.scancode){
+		case SDL_SCANCODE_W: {
+			position = position + Vector2D(0, -30);
+			break;
+		}
+		case SDL_SCANCODE_S: {
+			position = position + Vector2D(0, 30); 
+			break;
+		}
+		default: {
+			break;
+		}
+			
 		}
 		
 	}
