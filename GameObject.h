@@ -1,8 +1,8 @@
 #pragma once
 #include <SDL.h>
 #include <string>
-#include <Vector2D.h>
-#include <Texture.h>
+#include "Vector2D.h"
+#include "Texture.h"
 
 
 class Animator {
@@ -23,7 +23,13 @@ protected:
 	Vector2D position;
 	
 public:
-	GameObject(){}
+	GameObject(){
+		PATH = "";
+		NAME = "";
+		CLASS = "";
+		texture = NULL;
+		position = Vector2D(0, 0);
+	}
 
 	GameObject(std::string _NAME, std::string _PATH){
 		NAME = _NAME;

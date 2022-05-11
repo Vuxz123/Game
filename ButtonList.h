@@ -1,7 +1,7 @@
 #pragma once
-#include <GameObject.h>
+#include "GameObject.h"
 #include <vector>
-#include <TexOb.h>
+#include "TexOb.h"
 #include <functional>
 #include <map>
 

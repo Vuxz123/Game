@@ -1,4 +1,3 @@
-﻿  Player.cpp
-D:\Solution1\GameProJect\GameProJect\Util.h(9,29): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-D:\Solution1\GameProJect\GameProJect\Util.h(10,29): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+﻿  GameStructure.cpp
+D:\Solution1\GameProJect\GameProJect\GameStructure.cpp(230,27): warning C4244: '=': conversion from 'Uint64' to 'float', possible loss of data
   GameProJect.vcxproj -> D:\Solution1\GameProJect\x64\Debug\GameProJect.exe

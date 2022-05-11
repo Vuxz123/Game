@@ -1,13 +1,15 @@
 #pragma once
 #include "GameObject.h"
 #include <functional>
+#include <map>
 
 class AbOb :
     public GameObject
 {
-private:
+protected:
 	std::function<void(SDL_Event* Event)> actionevent;
 	std::function<void()> actiontick;
+	std::map<std::string, int> variable;
 
 public:
 
@@ -41,5 +43,20 @@ public:
 	}
 
 	void free() override{}
+
+	void addVar(std::string name, int k) {
+		variable.insert(std::pair<std::string, int>(name, k));
+	}
+
+	int getVar(std::string name) {
+		return variable[name];
+	}
+
+	void setVar(std::string name, int k) {
+		if (variable.find(name) != variable.end()) {
+			variable[name] = k;
+		}
+		return;
+	}
 };
 

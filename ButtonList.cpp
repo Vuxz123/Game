@@ -63,9 +63,10 @@ void ButtonList::eventCheck(SDL_Event* Event)
 
 void ButtonList::tick()
 {
+	
 }
 
 void ButtonList::free()
 {
-
+	
 }
